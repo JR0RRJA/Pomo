@@ -288,22 +288,18 @@ class Pomodoro {
         const v = this.values;
         if(this.isWork) this.done++;
         
-        // Si completó todos los ciclos de trabajo
         if(this.done>=v.c){
             if(this.isWork){
-                // Pasar a descanso largo
                 this.isWork=false;
                 this.time=v.l*60;
                 this.total=this.time;
                 this.updateUI();
             } else {
-                // Descanso largo terminado, fin del Pomodoro
                 this.finish();
             }
             return;
         }
 
-        // Alterna trabajo/descanso corto
         this.isWork = !this.isWork;
         this.time = this.isWork ? v.w*60 : v.b*60;
         this.total = this.time;
@@ -325,4 +321,5 @@ new Pomodoro();
 </script>
 </body>
 </html>
+
 
