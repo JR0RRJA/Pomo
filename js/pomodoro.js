@@ -122,12 +122,25 @@ Object.values(inputs).forEach(i => i.addEventListener("input", () => {
 
 document.getElementById("startBtn").onclick = startTimer;
 document.getElementById("pauseBtn").onclick = pauseTimer;
-document.getElementById("unlockBtn").onclick = () => {
-    locked = false;          
-    toggleInputs(true);      
-    Object.values(inputs).forEach(i => i.disabled = false);
-                }
+document.getElementById("resetBtn").addEventListener("click", function () {
+    clearInterval(timer);
+    isRunning = false;
+    currentCycle = 1;
+    isWorkTime = true;
+
+    // Restaurar tiempos visibles
+    updateDisplayedTimes();
+
+    // Reactivar inputs para modificar todo
+    enableInputs();
+
+    // Reiniciar etiqueta y contador
+    timerLabel.textContent = "Trabajo";
+    timeLeft = workTime * 60;
+    updateTimerDisplay();
+});
 
 updateUI();
+
 
 
