@@ -123,10 +123,11 @@ Object.values(inputs).forEach(i => i.addEventListener("input", () => {
 document.getElementById("startBtn").onclick = startTimer;
 document.getElementById("pauseBtn").onclick = pauseTimer;
 document.getElementById("unlockBtn").onclick = () => {
-    locked = false;                    // desbloquea lógica interna
-    toggleInputs(true);                // muestra inputs
-    Object.values(inputs).forEach(i => i.disabled = false); // habilita campos
-};
+    locked = false;          
+    toggleInputs(true);      
+    Object.values(inputs).forEach(i => i.disabled = false);
+                }
 
 updateUI();
+
 
