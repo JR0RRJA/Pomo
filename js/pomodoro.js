@@ -56,7 +56,7 @@ const switchPhase = () => {
         // Descanso largo
         isWork = false;
         timeLeft = v.longBreak * 60;
-        notify("¡Descanso largo!");
+        notify("Â¡Descanso largo!");
         updateUI();
         return;
     }
@@ -70,7 +70,7 @@ const switchPhase = () => {
 const endSession = () => {
     clearInterval(interval);
     interval = null;
-    notify("¡Ciclo Pomodoro completado!");
+    notify("Â¡Ciclo Pomodoro completado!");
     modeEl.textContent = "Ciclo finalizado ?";
     locked = false;
     toggleInputs(true);
@@ -122,5 +122,11 @@ Object.values(inputs).forEach(i => i.addEventListener("input", () => {
 
 document.getElementById("startBtn").onclick = startTimer;
 document.getElementById("pauseBtn").onclick = pauseTimer;
+document.getElementById("unlockBtn").onclick = () => {
+    locked = false;                    // desbloquea lÃ³gica interna
+    toggleInputs(true);                // muestra inputs
+    Object.values(inputs).forEach(i => i.disabled = false); // habilita campos
+};
 
 updateUI();
+
